@@ -35,7 +35,7 @@ if (typingTarget && window.Typed) {
             "Cybersecurity Enthusiast",
             "Ethical Hacker",
             "Software Tester",
-            "QA Tester",
+            "QA Engineer",
             "Aspiring Cybersecurity Engineer"
         ],
         typeSpeed: 80,

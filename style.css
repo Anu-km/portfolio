@@ -358,6 +358,38 @@ form {
     margin-top: 18px;
 }
 
+.about-details {
+    display: grid;
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.about-panel {
+    padding: 22px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.about-panel h3 {
+    margin-bottom: 12px;
+    color: var(--accent);
+    font-size: 1.12rem;
+}
+
+.about-panel p {
+    margin: 0;
+}
+
+.about-panel p + p {
+    margin-top: 8px;
+}
+
+.about-panel-title {
+    color: var(--text);
+    font-weight: 600;
+}
+
 .about-content ul {
     list-style: none;
     display: grid;
@@ -381,31 +413,93 @@ form {
     gap: 24px;
 }
 
-.skill-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+.skills-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    align-items: stretch;
 }
 
-.skill-card {
-    padding: 28px 20px;
-    text-align: center;
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.045);
+.skill-group {
+    height: clamp(210px, 24vw, 250px);
+    padding: 14px;
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.skill-group-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.skill-group-head i {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.skill-group-head h3 {
+    font-size: 0.92rem;
+    line-height: 1.3;
+}
+
+.skill-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-content: flex-start;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 2px;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 247, 255, 0.45) rgba(255, 255, 255, 0.04);
+}
+
+.skill-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.skill-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 247, 255, 0.45);
+    border-radius: 999px;
+}
+
+.skill-list li {
+    max-width: 100%;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(14px);
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+    color: var(--muted);
+    font-size: 0.76rem;
+    line-height: 1.25;
+    white-space: normal;
 }
 
-.skill-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(0, 247, 255, 0.45);
-    box-shadow: 0 18px 42px rgba(0, 247, 255, 0.14);
+.skill-group-learning {
+    background:
+        radial-gradient(circle at top right, rgba(0, 247, 255, 0.12), transparent 45%),
+        var(--surface);
 }
 
 .project-container {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: start;
 }
 
 .timeline {
@@ -470,12 +564,14 @@ form {
 .project {
     border-radius: var(--radius-lg);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .project img,
 .project-visual {
     width: 100%;
-    height: 220px;
+    height: 240px;
 }
 
 .project img {
@@ -483,8 +579,13 @@ form {
 }
 
 .project-visual {
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 24px;
+    text-align: center;
     background:
         radial-gradient(circle at top, rgba(0, 247, 255, 0.22), transparent 58%),
         linear-gradient(135deg, rgba(0, 247, 255, 0.12), rgba(255, 255, 255, 0.02));
@@ -496,8 +597,17 @@ form {
     text-shadow: 0 0 40px rgba(0, 247, 255, 0.3);
 }
 
+.project-visual-label {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 .project-copy {
     padding: 24px;
+    display: grid;
+    gap: 20px;
+    height: 100%;
 }
 
 .project-tag {
@@ -511,6 +621,7 @@ form {
     font-size: 0.82rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    margin-bottom: 0;
 }
 
 .project-copy h3,
@@ -527,6 +638,79 @@ form {
 .education-card p,
 .contact-card p {
     line-height: 1.8;
+}
+
+.project-description {
+    color: var(--muted);
+}
+
+.project-section {
+    display: grid;
+    gap: 12px;
+}
+
+.project-section h4 {
+    color: var(--accent);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.project-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.project-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.project-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 247, 255, 0.34);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+    transform: translateY(-3px);
+    background: rgba(0, 247, 255, 0.12);
+    border-color: rgba(0, 247, 255, 0.5);
+    box-shadow: 0 12px 28px rgba(0, 247, 255, 0.16);
+}
+
+.project-link-disabled {
+    opacity: 0.72;
+    cursor: default;
 }
 
 .certificate-grid {
@@ -745,11 +929,41 @@ footer p {
     .project-copy,
     .timeline-card,
     .education-card,
-    .contact-card {
+    .contact-card,
+    .skill-group {
         padding: 22px;
     }
 
     .hero-pill-list {
         gap: 10px;
+    }
+
+    .skills-layout {
+        gap: 12px;
+    }
+
+    .skill-group {
+        height: 200px;
+        padding: 12px;
+    }
+
+    .skill-group-head {
+        gap: 7px;
+        margin-bottom: 9px;
+    }
+
+    .skill-group-head i {
+        width: 30px;
+        height: 30px;
+        font-size: 0.78rem;
+    }
+
+    .skill-group-head h3 {
+        font-size: 0.86rem;
+    }
+
+    .skill-list li {
+        padding: 5px 7px;
+        font-size: 0.72rem;
     }
 }
